@@ -12,17 +12,17 @@
 2. **在应用里从 GitHub 安装**：MyGo Music → 设置 → 插件 → `+`，填入仓库：
 
    ```text
-   Maker-World/mygo-music-migu
+   Maker-World/MygoMusicMigu
    ```
 
-   也可以填完整地址 `https://github.com/Maker-World/mygo-music-migu`。
+   也可以填完整地址 `https://github.com/Maker-World/MygoMusicMigu`。
 3. **用安装链接**：GitHub 不让 README 里的 `mygo-music://` 链接点击，把下面这行复制到浏览器地址栏打开即可：
 
    ```text
-   mygo-music://install-plugin?repo=Maker-World/mygo-music-migu
+   mygo-music://install-plugin?repo=Maker-World/MygoMusicMigu
    ```
 
-4. **从 ZIP 安装**：下载 [main.zip](https://github.com/Maker-World/mygo-music-migu/archive/refs/heads/main.zip)，在 设置 → 插件 → `+` 里选这个 ZIP（不用解压）。
+4. **从 ZIP 安装**：下载 [main.zip](https://github.com/Maker-World/MygoMusicMigu/archive/refs/heads/main.zip)，在 设置 → 插件 → `+` 里选这个 ZIP（不用解压）。
 5. **手动安装**：把仓库克隆或解压出来的整个文件夹放进插件目录（设置 → 插件 → `+` → 显示插件文件夹），重启 MyGo Music。
 
 通过前三种方式装的，有新提交时会在 设置 → 插件 里提示更新。
@@ -62,7 +62,7 @@
 - **不收集任何数据**：扫码登录在你手机上的咪咕音乐 App 里确认，网页登录在咪咕自己的页面完成，插件都拿不到你的密码。登录凭据只保存在你本机的 MyGo Music 里，只发往咪咕自己的服务器；插件没有自己的服务器，不收集、不上传任何个人信息或使用数据。
 - **版权归原作者**：所有歌曲、歌词、封面等内容的版权归其权利人所有，请支持正版，需要高品质或会员内容请在咪咕音乐开通相应服务。
 - **风险自担**：本插件按「现状」提供，不对其可用性、稳定性作任何保证。咪咕可能随时调整接口，导致功能失效；使用本插件即表示你同意自行承担使用风险，并遵守[咪咕用户服务协议](https://passport.migu.cn/portal/protocol?sourceid=220001)及相关法律法规。请勿将本插件用于商业用途或任何违反上述协议的用途。
-- **侵权联系**：如果咪咕或其他权利人认为本项目侵犯了其合法权益，请通过本仓库的 [Issues](https://github.com/Maker-World/mygo-music-migu/issues) 联系，我会在核实后第一时间修改或删除相关内容。
+- **侵权联系**：如果咪咕或其他权利人认为本项目侵犯了其合法权益，请通过本仓库的 [Issues](https://github.com/Maker-World/MygoMusicMigu/issues) 联系，我会在核实后第一时间修改或删除相关内容。
 
 ## 开发
 
