@@ -22,14 +22,14 @@
    mygo-music://install-plugin?repo=Maker-World/MygoMusicMigu
    ```
 
-4. **从 ZIP 安装**：下载 [main.zip](https://github.com/Maker-World/MygoMusicMigu/archive/refs/heads/main.zip)，在 设置 → 插件 → `+` 里选这个 ZIP（不用解压）。
+4. **从 ZIP 安装**：下载 [v0.2.4 通用安装包](https://github.com/Maker-World/MygoMusicMigu/releases/download/v0.2.4/mygo-music-migu-0.2.4.zip)，在 设置 → 插件 → `+` 里选这个 ZIP（不用解压）。无需区分系统或处理器架构。
 5. **手动安装**：把仓库克隆或解压出来的整个文件夹放进插件目录（设置 → 插件 → `+` → 显示插件文件夹），重启 MyGo Music。
 
 通过前三种方式装的，有新提交时会在 设置 → 插件 里提示更新。
 
 装好后在左上角的来源切换里选「咪咕音乐」，点左下角账号处的「登录」，用咪咕音乐 App 扫描显示的二维码并确认。主分支仅支持扫码登录。
 
-需要网页登录的旧版本保留在 `codex/web-login-current` 分支。
+需要网页登录的旧版本保留在 [`codex/web-login-current` 分支](https://github.com/Maker-World/MygoMusicMigu/tree/codex/web-login-current)。版本变化见 [更新记录](CHANGELOG.md)。
 
 插件加载时会检查续期时间。MyGo Music 运行期间，插件每 30 分钟尝试续期，遇到网络故障会保留原会话，并在 5 分钟后重试。遇到接口要求重新登录时，插件会先尝试续期。咪咕确认会话失效后，请重新登录。
 
@@ -66,9 +66,13 @@
 
 ## 开发
 
+使用 Node.js 22 及以上版本；打包还需要 Bash 和 `zip`。
+
 ```bash
+npm run check      # 语法检查
 npm test           # 离线测试
 npm run test:live  # 对真实咪咕接口跑一遍不需要登录的功能
+npm run package    # 生成 dist/mygo-music-migu-<版本号>.zip
 ```
 
 `index.js` 末尾打包了 [jsQR](https://github.com/cozmo/jsQR)（Apache-2.0）和 [jpeg-js](https://github.com/jpeg-js/jpeg-js)（BSD-3-Clause）的解码器，用来读出咪咕以图片形式给出的二维码，许可证见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

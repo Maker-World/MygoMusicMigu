@@ -1,13 +1,14 @@
 {
   "name": "mygo-music-migu",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "private": true,
   "type": "module",
   "license": "MIT",
   "scripts": {
     "check": "node --check index.js",
     "test": "node --experimental-vm-modules tests/crypto.mjs && node --experimental-vm-modules tests/session.mjs && node --experimental-vm-modules tests/signin.mjs",
-    "test:live": "node --experimental-vm-modules tests/live.mjs"
+    "test:live": "node --experimental-vm-modules tests/live.mjs",
+    "package": "bash scripts/package.sh"
   },
   "engines": {
     "node": ">=22"
