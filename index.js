@@ -2,7 +2,7 @@
 //
 // Signed out, it searches, shows charts, playlists, albums, artists and radio,
 // shows lyrics, and plays the songs Migu lets anyone play, at standard
-// quality. Signing in on Migu's own page (text message, password or SIM)
+// quality. Signing in by scanning a QR code with the Migu Music app
 // adds liked songs, playlists of one's own, saved albums and playlists, daily
 // picks, private FM, and the higher qualities an account is entitled to.
 //
@@ -547,9 +547,7 @@ export async function signIn() {
   const signal = controller.signal;
   const deadline = Date.now() + SIGN_IN_TIMEOUT;
   try {
-    const value = host.setting("signInMethod").trim() === "web"
-      ? await signInOnWebsite()
-      : await signInByQR(signal);
+    const value = await signInByQR(signal);
     signal.throwIfAborted();
     const me = await fetchMe(value, authSignal(signal)).catch(() => null);
     signal.throwIfAborted();
@@ -673,21 +671,6 @@ function dataBytes(url) {
     }
   }
   return out.subarray(0, n);
-}
-
-// The music site embeds Passport and exchanges its login result for the cookie
-// MyGo Music's webSignIn API can return.
-async function signInOnWebsite() {
-  host.signInPrompt({ text: t("In the page that opened, click 登录 at the top right.") });
-  const { cookie } = await host.webSignIn({
-    url: `${SITE}/v5/`,
-    cookiesOf: `${SITE}/v5/`,
-    until: ["pacmtoken"],
-    userAgent: UA,
-  });
-  const value = cookieValue(cookie, "pacmtoken");
-  if (!value) throw new Error(t("Migu Music didn't take that sign-in: try again"));
-  return value;
 }
 
 export function signOut() {

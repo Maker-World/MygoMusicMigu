@@ -9,7 +9,7 @@ import { createHash } from "node:crypto";
 const dir = fileURLToPath(new URL("..", import.meta.url));
 
 export async function load({
-  storage = new Map(), fetch: fetchImpl = fetch, webSignIn, signInPrompt = () => {},
+  storage = new Map(), fetch: fetchImpl = fetch, signInPrompt = () => {},
   settings = {}, language = "zh-CN", timers = { setTimeout, clearTimeout },
 } = {}) {
   const locale = JSON.parse(await readFile(join(dir, "locales/zh-CN.json"), "utf8"));
@@ -29,7 +29,6 @@ export async function load({
     crypto: { md5: (s) => createHash("md5").update(s).digest("hex") },
     openURL: (u) => console.log("openURL", u),
     signInPrompt,
-    ...(webSignIn ? { webSignIn } : {}),
   };
   const source = await readFile(join(dir, "index.js"), "utf8");
   const mod = new SourceTextModule(source, {

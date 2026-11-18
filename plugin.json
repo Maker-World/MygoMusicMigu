@@ -22,17 +22,6 @@
       }
     ]
   },
-  "settings": [
-    {
-      "key": "signInMethod",
-      "label": "Sign-in method",
-      "type": "select",
-      "options": [
-        { "value": "", "label": "QR code sign-in" },
-        { "value": "web", "label": "Web sign-in" }
-      ]
-    }
-  ],
   "navigation": [
     { "builtin": "home" },
     { "title": "Charts", "page": "charts", "icon": "chart" },

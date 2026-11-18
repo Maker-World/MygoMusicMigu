@@ -1,6 +1,7 @@
 // Keeping the session going, against a stand-in for Migu.
 import assert from "node:assert/strict";
 import { load } from "./harness.mjs";
+import { migu as qrMigu, timers as qrTimers } from "./fixtures/signin.mjs";
 
 const CHECK = "https://c.musicapp.migu.cn/mgateway/api/checkPacMtoken";
 
@@ -161,13 +162,12 @@ const tests = {
   async "does not reuse an old renewal response after signing back into the same token"() {
     let finish;
     const storage = session();
+    const { fetch } = qrMigu({ token: "old" });
     const { api } = await load({
-      storage,
-      settings: { signInMethod: "web" },
-      webSignIn: async () => ({ cookie: "pacmtoken=old" }),
-      fetch: (url) => String(url) === CHECK
+      storage, timers: qrTimers,
+      fetch: (url, init) => String(url) === CHECK
         ? new Promise((resolve) => { finish = resolve; })
-        : profile(),
+        : fetch(url, init),
     });
     const first = api.account();
     api.signOut();
